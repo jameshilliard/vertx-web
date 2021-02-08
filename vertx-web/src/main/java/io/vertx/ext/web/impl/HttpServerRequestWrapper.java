@@ -3,6 +3,7 @@ package io.vertx.ext.web.impl;
 import io.netty.handler.codec.http.QueryStringDecoder;
 import io.vertx.codegen.annotations.Nullable;
 import io.vertx.core.AsyncResult;
+import io.vertx.core.Context;
 import io.vertx.core.Future;
 import io.vertx.core.Handler;
 import io.vertx.core.MultiMap;
@@ -385,6 +386,11 @@ class HttpServerRequestWrapper implements HttpServerRequest {
   public HttpServerRequest routed(String route) {
     delegate.routed(route);
     return this;
+  }
+
+  @Override
+  public Context context() {
+    return delegate.context();
   }
 
   @Override
